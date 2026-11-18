@@ -1,0 +1,34 @@
+"""Recheck saved deployments independently; run after experiments or extraction."""
+from pathlib import Path
+import hashlib
+import json
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from src.dataset_generator import load_instance
+from src.optimization import verify
+
+ROOT=Path(__file__).resolve().parents[1]
+
+
+def main():
+    checked=0
+    groups=[('results/benchmark/benchmark.json',ROOT/'data'),
+            ('results/accuracy/accuracy.json',ROOT/'results/accuracy/instances'),
+            ('results/coverage_sweep/coverage_sweep.json',ROOT/'results/coverage_sweep/instances')]
+    for filename,folder in groups:
+        rows=json.loads((ROOT/filename).read_text(encoding='utf-8'))
+        for r in rows:
+            meta=load_instance(folder/(r['instance']+'.dzn'))
+            assert r['instance_sha256']==meta['dzn_sha256']
+            if r.get('model_sha256'):
+                assert r['model_sha256']==hashlib.sha256((ROOT/'src/radio_coverage.mzn').read_bytes()).hexdigest()
+            if r['verified']:
+                actual=verify(meta,r['x'],r['objective'])
+                assert actual['selected']==r['selected']
+                assert actual['covered_points']==r['covered_points']
+                assert actual['critical_support']==r['critical_support']
+                checked+=1
+    print(f'Independently revalidated {checked} saved experiment deployments.')
+
+
+if __name__=='__main__': main()

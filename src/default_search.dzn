@@ -1,0 +1,4 @@
+variable_order=dom_w_deg;
+value_order=indomain_random;
+restart_policy=empty_annotation;
+

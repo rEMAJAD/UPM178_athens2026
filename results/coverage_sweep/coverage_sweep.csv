@@ -1,0 +1,4 @@
+instance,n,m,strategy,limit_seconds,total_runtime,status,timeout,proven_optimal,verified,objective,coverage_percent,validation_percent,minimum_percent,solveTime,flatTime,initTime,failures,nodes,propagations,propagators,nogoods,restarts,peakDepth
+coverage_95,10,102,weighted_random,10.0,6.02132160000474,OPTIMAL_SOLUTION,False,True,True,1060,95.09803921568627,N/A,95,5.54343,0.379215,0.0078392,195886,391923,32336426,317,N/A,0,54
+coverage_98,10,102,weighted_random,10.0,6.779228200000944,OPTIMAL_SOLUTION,False,True,True,1109,98.0392156862745,N/A,98,6.31614,0.358193,0.009147,262044,524202,39945853,317,N/A,0,48
+coverage_100,10,102,weighted_random,10.0,1.448220999998739,OPTIMAL_SOLUTION,False,True,True,1289,100.0,N/A,100,1.02149,0.335097,0.0069087,38720,77555,4151421,116,N/A,0,42
