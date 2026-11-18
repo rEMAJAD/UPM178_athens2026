@@ -179,3 +179,28 @@ Nic nie jest wysyłane automatycznie. Instrukcja kursu podaje termin przed 20 li
 
 Źródła: specyfikacja projektu, wykłady i wymagania UPM178 oraz
 [dokumentacja MiniZinc](https://docs.minizinc.dev/en/stable/mzn_search.html).
+
+## Porównanie metod MiniZinc (results/experiments/)
+
+```powershell
+python main.py experiments --part models solvers --seconds 60
+python main.py experiments --part search --seconds 20
+python main.py experiments --part search_hard restarts --seconds 30
+python main.py experiments --part coverage --seconds 60
+python -B src/analyze_experiments.py
+```
+
+Warianty modelu (ten sam plik .dzn, ten sam weryfikator):
+
+| Plik | Co dodaje |
+|---|---|
+| radio_coverage.mzn | model bazowy, zmienne 0/1 x[i,k,p] |
+| radio_coverage_dom.mzn | + dominance breaking (dominance.mzn) + redundant_constraint |
+| radio_coverage_int.mzn | drugi punkt widzenia: conf[i] in 0..K*P, koszt przez element |
+| radio_coverage_int_dom.mzn | punkt widzenia int + dominance breaking + redundant_constraint |
+
+Części: `search` (8 heurystyk zmiennej × 6 wartości), `search_hard` (to samo na 05–10),
+`restarts` (constant/linear/geometric/luby), `models`, `solvers` (Gecode, Chuffed, CP-SAT,
+HiGHS, COIN-BC), `coverage` (95/98/100%). Każda próba to osobny JSON; przerwaną serię
+wystarczy uruchomić ponownie. Wyniki, tabele i wykresy: `results/experiments/SUMMARY.md`.
+Na macOS MiniZinc jest wykrywany w /Applications/MiniZincIDE.app.

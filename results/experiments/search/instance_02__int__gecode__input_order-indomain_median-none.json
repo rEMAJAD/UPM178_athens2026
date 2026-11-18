@@ -1,0 +1,501 @@
+{
+  "instance": "instance_02",
+  "n": 15,
+  "m": 227,
+  "strategy": "custom",
+  "model": "int",
+  "solver": "gecode",
+  "free_search": false,
+  "var_order": "input_order",
+  "value_order": "indomain_median",
+  "restart": "empty_annotation",
+  "seed": 178,
+  "threads": 1,
+  "limit_seconds": 20.0,
+  "total_runtime": 0.46922429199912585,
+  "status": "OPTIMAL_SOLUTION",
+  "proven_optimal": true,
+  "timeout": false,
+  "objective": 1143,
+  "verified": true,
+  "statistics": {
+    "paths": 0,
+    "flatBoolVars": 154,
+    "flatIntVars": 41,
+    "flatBoolConstraints": 202,
+    "flatIntConstraints": 186,
+    "evaluatedHalfReifiedConstraints": 154,
+    "method": "minimize",
+    "flatTime": 0.11953,
+    "initTime": 0.00209933,
+    "solveTime": 0.283618,
+    "solutions": 39,
+    "variables": 195,
+    "propagators": 382,
+    "propagations": 5036805,
+    "nodes": 47438,
+    "failures": 23680,
+    "restarts": 0,
+    "peakDepth": 33,
+    "nSolutions": 39
+  },
+  "trajectory": [
+    [
+      0.142,
+      1836
+    ],
+    [
+      0.143,
+      1775
+    ],
+    [
+      0.143,
+      1762
+    ],
+    [
+      0.144,
+      1755
+    ],
+    [
+      0.144,
+      1737
+    ],
+    [
+      0.144,
+      1695
+    ],
+    [
+      0.145,
+      1688
+    ],
+    [
+      0.145,
+      1670
+    ],
+    [
+      0.145,
+      1663
+    ],
+    [
+      0.146,
+      1650
+    ],
+    [
+      0.146,
+      1643
+    ],
+    [
+      0.146,
+      1635
+    ],
+    [
+      0.147,
+      1628
+    ],
+    [
+      0.147,
+      1622
+    ],
+    [
+      0.148,
+      1609
+    ],
+    [
+      0.148,
+      1602
+    ],
+    [
+      0.148,
+      1594
+    ],
+    [
+      0.149,
+      1568
+    ],
+    [
+      0.149,
+      1493
+    ],
+    [
+      0.149,
+      1450
+    ],
+    [
+      0.15,
+      1433
+    ],
+    [
+      0.15,
+      1430
+    ],
+    [
+      0.15,
+      1410
+    ],
+    [
+      0.151,
+      1395
+    ],
+    [
+      0.151,
+      1390
+    ],
+    [
+      0.152,
+      1370
+    ],
+    [
+      0.152,
+      1355
+    ],
+    [
+      0.152,
+      1264
+    ],
+    [
+      0.152,
+      1255
+    ],
+    [
+      0.153,
+      1223
+    ],
+    [
+      0.154,
+      1218
+    ],
+    [
+      0.156,
+      1210
+    ],
+    [
+      0.19,
+      1198
+    ],
+    [
+      0.19,
+      1191
+    ],
+    [
+      0.193,
+      1189
+    ],
+    [
+      0.193,
+      1164
+    ],
+    [
+      0.193,
+      1157
+    ],
+    [
+      0.362,
+      1150
+    ],
+    [
+      0.363,
+      1143
+    ]
+  ],
+  "time_to_first": 0.142,
+  "time_to_best": 0.363,
+  "messages": [],
+  "stderr": "",
+  "command": [
+    "/Applications/MiniZincIDE.app/Contents/Resources/minizinc",
+    "--solver",
+    "org.gecode.gecode",
+    "--json-stream",
+    "--statistics",
+    "--intermediate-solutions",
+    "--output-time",
+    "--time-limit",
+    "20000",
+    "--fzn-flags",
+    "-r 178 -p 1",
+    "-D",
+    "variable_order=input_order;value_order=indomain_median;restart_policy=empty_annotation;",
+    "src/radio_coverage_int.mzn",
+    "data/instance_02.dzn"
+  ],
+  "instance_sha256": "9d97fb9806a01b0253ae66cad7e4e5705228b1ac3be28a2384a227294f74664d",
+  "model_sha256": "c21e8ded3905cca0b345713f36b6076c85e80a98d751583a9877b8b31c1bca1f",
+  "x": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "selected": [
+    [
+      3,
+      0,
+      3
+    ],
+    [
+      5,
+      3,
+      3
+    ],
+    [
+      6,
+      0,
+      3
+    ],
+    [
+      7,
+      0,
+      3
+    ],
+    [
+      11,
+      2,
+      3
+    ]
+  ],
+  "critical_support": [
+    2,
+    2
+  ],
+  "covered_points": 227,
+  "coverage_percent": 100.0,
+  "run_id": "instance_02__int__gecode__input_order-indomain_median-none",
+  "part": "search",
+  "restart_name": "none"
+}

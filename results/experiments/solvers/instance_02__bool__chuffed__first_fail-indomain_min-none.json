@@ -1,0 +1,532 @@
+{
+  "instance": "instance_02",
+  "n": 15,
+  "m": 227,
+  "strategy": "custom",
+  "model": "bool",
+  "solver": "chuffed",
+  "free_search": false,
+  "var_order": "first_fail",
+  "value_order": "indomain_min",
+  "restart": "empty_annotation",
+  "seed": 178,
+  "threads": 1,
+  "limit_seconds": 60.0,
+  "total_runtime": 60.073795584001346,
+  "status": "SATISFIED",
+  "proven_optimal": false,
+  "timeout": true,
+  "objective": 1143,
+  "verified": true,
+  "statistics": {
+    "paths": 0,
+    "flatBoolVars": 236,
+    "flatIntVars": 627,
+    "flatBoolConstraints": 11,
+    "flatIntConstraints": 707,
+    "evaluatedReifiedConstraints": 236,
+    "method": "minimize",
+    "flatTime": 0.238037,
+    "nodes": 1903986,
+    "failures": 357529,
+    "restarts": 37,
+    "variables": 11398,
+    "intVars": 628,
+    "boolVariables": 10768,
+    "propagators": 500,
+    "propagations": 180102703,
+    "peakDepth": 139,
+    "nogoods": 357529,
+    "backjumps": 1542382,
+    "peakMem": 0.0,
+    "time": 59.765,
+    "initTime": 0.019,
+    "solveTime": 59.746,
+    "objective": 1143,
+    "optTime": 2.531,
+    "baseMem": 0.0,
+    "trailMem": 0.05,
+    "randomSeed": 178,
+    "nSolutions": 37
+  },
+  "trajectory": [
+    [
+      0.278,
+      1806
+    ],
+    [
+      0.28,
+      1781
+    ],
+    [
+      0.281,
+      1730
+    ],
+    [
+      0.284,
+      1653
+    ],
+    [
+      0.285,
+      1628
+    ],
+    [
+      0.287,
+      1577
+    ],
+    [
+      0.299,
+      1552
+    ],
+    [
+      0.313,
+      1543
+    ],
+    [
+      0.337,
+      1527
+    ],
+    [
+      0.351,
+      1518
+    ],
+    [
+      0.373,
+      1507
+    ],
+    [
+      0.387,
+      1498
+    ],
+    [
+      0.418,
+      1489
+    ],
+    [
+      0.446,
+      1473
+    ],
+    [
+      0.46,
+      1464
+    ],
+    [
+      0.493,
+      1457
+    ],
+    [
+      0.511,
+      1446
+    ],
+    [
+      0.515,
+      1426
+    ],
+    [
+      0.518,
+      1371
+    ],
+    [
+      0.521,
+      1346
+    ],
+    [
+      0.524,
+      1310
+    ],
+    [
+      0.527,
+      1300
+    ],
+    [
+      0.531,
+      1275
+    ],
+    [
+      0.537,
+      1266
+    ],
+    [
+      0.549,
+      1250
+    ],
+    [
+      0.557,
+      1241
+    ],
+    [
+      0.567,
+      1230
+    ],
+    [
+      0.575,
+      1221
+    ],
+    [
+      0.593,
+      1212
+    ],
+    [
+      0.604,
+      1196
+    ],
+    [
+      0.611,
+      1187
+    ],
+    [
+      0.629,
+      1180
+    ],
+    [
+      1.677,
+      1171
+    ],
+    [
+      1.683,
+      1162
+    ],
+    [
+      1.693,
+      1155
+    ],
+    [
+      2.796,
+      1150
+    ],
+    [
+      2.806,
+      1143
+    ]
+  ],
+  "time_to_first": 0.278,
+  "time_to_best": 2.806,
+  "messages": [
+    {
+      "type": "comment",
+      "comment": "% Pruned 49997 learnt clauses\n"
+    },
+    {
+      "type": "comment",
+      "comment": "% Pruned 50000 learnt clauses\n"
+    },
+    {
+      "type": "comment",
+      "comment": "% Pruned 50000 learnt clauses\n"
+    },
+    {
+      "type": "comment",
+      "comment": "% Pruned 50000 learnt clauses\n"
+    },
+    {
+      "type": "comment",
+      "comment": "% Pruned 50000 learnt clauses\n"
+    },
+    {
+      "type": "comment",
+      "comment": "% Pruned 50000 learnt clauses\n"
+    },
+    {
+      "type": "comment",
+      "comment": "% Time limit exceeded!\n"
+    }
+  ],
+  "stderr": "WARNING: the --time-out flag has recently been changed.The time-out is now provided in milliseconds instead of seconds\n",
+  "command": [
+    "/Applications/MiniZincIDE.app/Contents/Resources/minizinc",
+    "--solver",
+    "org.chuffed.chuffed",
+    "--json-stream",
+    "--statistics",
+    "--intermediate-solutions",
+    "--output-time",
+    "--time-limit",
+    "60000",
+    "-r",
+    "178",
+    "-D",
+    "variable_order=first_fail;value_order=indomain_min;restart_policy=empty_annotation;",
+    "src/radio_coverage.mzn",
+    "data/instance_02.dzn"
+  ],
+  "instance_sha256": "9d97fb9806a01b0253ae66cad7e4e5705228b1ac3be28a2384a227294f74664d",
+  "model_sha256": "e7de184fd5a489ca800a0e4e76b3a3d5b632f71823c16cb231ad07035348080a",
+  "x": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "selected": [
+    [
+      3,
+      0,
+      3
+    ],
+    [
+      5,
+      3,
+      3
+    ],
+    [
+      6,
+      0,
+      3
+    ],
+    [
+      7,
+      0,
+      3
+    ],
+    [
+      11,
+      2,
+      3
+    ]
+  ],
+  "critical_support": [
+    2,
+    2
+  ],
+  "covered_points": 227,
+  "coverage_percent": 100.0,
+  "run_id": "instance_02__bool__chuffed__first_fail-indomain_min-none",
+  "part": "solvers",
+  "restart_name": "none"
+}

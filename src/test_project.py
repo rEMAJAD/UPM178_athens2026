@@ -217,3 +217,31 @@ def test_station_spacing_and_exact_boundary(tmp_path):
     meta['min_distance_km'] = 1.0
     result = solve(write_instance(meta,tmp_path/'boundary_distance.dzn'),seconds=10)
     assert result['proven_optimal'] and len(result['selected']) == 2
+
+
+# --- Warianty modelu i solvery (eksperymenty porownawcze) ---
+from src.optimization import MODELS, SOLVERS
+
+
+@pytest.mark.parametrize('percent',[0,95,100])
+@pytest.mark.parametrize('model',MODELS)
+def test_model_variants_match_exhaustive_enumeration(tmp_path,model,percent):
+    """Viewpoint i dominance breaking nie moga zmienic optimum (tylko przestrzen przeszukiwania)."""
+    meta=tiny_meta(percent); p=write_instance(meta,tmp_path/'tiny.dzn')
+    result=solve(p,seconds=10,model=model,search=('first_fail','indomain_min','empty_annotation'))
+    assert result['status']=='OPTIMAL_SOLUTION' and result['verified']
+    assert result['objective']==brute_force(meta)
+
+
+@pytest.mark.parametrize('solver',SOLVERS)
+def test_all_solvers_agree_on_real_instance(solver):
+    search=('first_fail','indomain_min','empty_annotation') if solver=='chuffed' else ('dom_w_deg','indomain_random','restart_luby(100)')
+    result=solve('data/instance_01.dzn',seconds=60,model='int_dom',solver=solver,free=solver!='gecode',search=search)
+    assert result['status']=='OPTIMAL_SOLUTION' and result['verified']
+    assert result['objective']==1289
+
+
+def test_dominance_breaking_keeps_optimum_on_real_instance():
+    costs={m:solve('data/instance_02.dzn',seconds=60,model=m,solver='cp-sat',free=True)['objective']
+           for m in MODELS}
+    assert len(set(costs.values()))==1, costs

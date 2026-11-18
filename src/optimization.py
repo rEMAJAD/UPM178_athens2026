@@ -21,10 +21,29 @@ STRATEGIES = {
 }
 
 
+# Warianty modelu (porownanie w eksperymentach). Model bazowy pozostaje bez zmian.
+MODELS = {
+    'bool': 'src/radio_coverage.mzn',             # zmienne 0/1 x[i,k,p]
+    'bool_dom': 'src/radio_coverage_dom.mzn',     # + dominance breaking + implied
+    'int': 'src/radio_coverage_int.mzn',          # viewpoint: conf[i] in 0..K*P
+    'int_dom': 'src/radio_coverage_int_dom.mzn',  # viewpoint + dominance + implied
+}
+SOLVERS = {
+    'gecode': 'org.gecode.gecode',
+    'chuffed': 'org.chuffed.chuffed',
+    'cp-sat': 'cp-sat',
+    'highs': 'org.minizinc.mip.highs',
+    'coin-bc': 'org.minizinc.mip.coin-bc',
+}
+MAC_MINIZINC = '/Applications/MiniZincIDE.app/Contents/Resources/minizinc'
+
+
 def executable():
     exe = os.environ.get('MINIZINC') or shutil.which('minizinc')
     if not exe and Path('C:/Program Files/MiniZinc/minizinc.exe').exists():
         exe = 'C:/Program Files/MiniZinc/minizinc.exe'
+    if not exe and Path(MAC_MINIZINC).exists():
+        exe = MAC_MINIZINC
     if not exe:
         raise RuntimeError('Install MiniZinc with Gecode and add it to PATH or set MINIZINC')
     return exe
@@ -62,44 +81,67 @@ def verify(meta, x, objective):
                 coverage_percent=100*float(mask.mean()), verified=True)
 
 
-def solve(path, strategy='weighted_random', seconds=900, output=None):
+def solve(path, strategy='weighted_random', seconds=900, output=None,
+          model='bool', solver='gecode', search=None, free=False):
+    """strategy: nazwa z STRATEGIES albo search=(var, val, restart) podane wprost.
+    free=True: solver uzywa wlasnego przeszukiwania (Chuffed/CP-SAT -f, MIP i tak ignoruje)."""
     if seconds <= 0 or not np.isfinite(seconds):
         raise ValueError('Time limit must be positive and finite')
     path = Path(path).resolve()
     meta = load_instance(path)
-    var,val,restart = STRATEGIES[strategy]
-    cmd = [executable(),'--solver','org.gecode.gecode','--json-stream','--statistics',
-           '--intermediate-solutions','--time-limit',str(max(1,int(seconds*1000))),
-           '--fzn-flags','-r 178 -p 1',
-           '-D',f'variable_order={var};value_order={val};restart_policy={restart};',
-           str(ROOT/'src/radio_coverage.mzn'),str(path)]
+    var,val,restart = search or STRATEGIES[strategy]
+    model_path = ROOT/MODELS[model]
+    mip = solver in ('highs','coin-bc')
+    cmd = [executable(),'--solver',SOLVERS[solver],'--json-stream','--statistics',
+           '--intermediate-solutions','--output-time','--time-limit',str(max(1,int(seconds*1000)))]
+    if solver == 'gecode':
+        cmd += ['--fzn-flags','-r 178 -p 1']
+    elif solver == 'chuffed':
+        cmd += ['-r','178'] + (['-f'] if free else [])
+    elif solver == 'cp-sat':
+        cmd += ['-p','1','-r','178'] + (['-f'] if free else [])
+    else:
+        cmd += ['-p','1']
+    cmd += ['-D',f'variable_order={var};value_order={val};restart_policy={restart};',
+            str(model_path),str(path)]
     started = time.perf_counter()
     proc = subprocess.run(cmd,capture_output=True,text=True,encoding='utf-8')
     elapsed = time.perf_counter()-started
-    statistics, messages, solution, status = {}, [], None, None
+    statistics, messages, solution, status, trajectory = {}, [], None, None, []
     for line in proc.stdout.splitlines():
         if not line.strip():
             continue
         msg = json.loads(line)
         kind = msg.get('type')
         if kind == 'statistics': statistics.update(msg['statistics'])
-        elif kind == 'solution': solution = json.loads(msg['output']['default'])
+        elif kind == 'solution':
+            solution = json.loads(msg['output']['default'])
+            # Przebieg branch & bound: [czas od startu w s, koszt] dla kolejnych rozwiazan.
+            trajectory.append([msg.get('time', 0) / 1000, solution['objective']])
         elif kind == 'status': status = msg['status']
         else: messages.append(msg)
     errors = [m for m in messages if m.get('type') == 'error']
     unsupported = [m for m in messages if 'ignored' in str(m).lower() or 'unsupported' in str(m).lower()]
-    if proc.returncode or errors or unsupported or any(w in proc.stderr.lower() for w in ('ignored','unsupported')):
+    # Solvery MIP z natury ignoruja adnotacje przeszukiwania; przy free search tez je pomijamy.
+    tolerant = mip or free
+    if proc.returncode or errors or (not tolerant and (unsupported or any(w in proc.stderr.lower() for w in ('ignored','unsupported')))):
         raise RuntimeError(f'MiniZinc failed or ignored annotation: {messages}\n{proc.stderr}')
     # MiniZinc may omit a status when it has an incumbent but hits the limit.
     status = status or ('SATISFIED' if solution else 'UNKNOWN')
     terminal = status in ('OPTIMAL_SOLUTION','UNSATISFIABLE','ALL_SOLUTIONS')
     result = dict(instance=path.stem, n=len(meta['stations']), m=len(meta['points']), strategy=strategy,
-                  solver='Gecode', seed=178, threads=1, limit_seconds=seconds,
+                  model=model, solver=solver, free_search=free, var_order=var, value_order=val, restart=restart,
+                  seed=178, threads=1, limit_seconds=seconds,
                   total_runtime=elapsed, status=status, proven_optimal=status=='OPTIMAL_SOLUTION',
                   timeout=not terminal, objective=None, verified=False, statistics=statistics,
-                  messages=messages, stderr=proc.stderr, command=cmd,
+                  trajectory=trajectory,
+                  time_to_first=trajectory[0][0] if trajectory else None,
+                  time_to_best=trajectory[-1][0] if trajectory else None,
+                  messages=messages, stderr=proc.stderr.replace(str(ROOT)+os.sep, ''),
+                  # sciezki wzgledem projektu - bez nazwy uzytkownika w zapisanych wynikach
+                  command=[c.replace(str(ROOT)+os.sep, '') for c in cmd],
                   instance_sha256=meta['dzn_sha256'],
-                  model_sha256=hashlib.sha256((ROOT/'src/radio_coverage.mzn').read_bytes()).hexdigest())
+                  model_sha256=hashlib.sha256(model_path.read_bytes()).hexdigest())
     if solution:
         result.update(solution)
         result.update(verify(meta,solution['x'],solution['objective']))

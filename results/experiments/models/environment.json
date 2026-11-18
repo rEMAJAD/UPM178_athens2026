@@ -1,0 +1,9 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "processor": "arm",
+  "python": "3.14.7",
+  "numpy": "2.5.5",
+  "cpu_count": 10,
+  "minizinc": "MiniZinc to FlatZinc converter, version 2.10.1, build 33348285743\nCopyright (C) 2014-2026 Monash University, NICTA, Data61",
+  "solvers": "MiniZinc driver.\nAvailable solver configurations:\n  Chuffed 0.14.0 (org.chuffed.chuffed, cp, lcg, int)\n  COIN-BC 2.10.13/1.17.11 (org.minizinc.mip.coin-bc, mip, float, api, osicbc, coinbc, cbc)\n  CPLEX <unknown version> (org.minizinc.mip.cplex, mip, float, api)\n  findMUS 2.10.1 (org.minizinc.findmus)\n  Gecode 6.4.0 (org.gecode.gecode, default solver, cp, int, float, set, restart)\n  Gecode Gist 6.4.0 (org.gecode.gist, cp, int, float, set, restart)\n  Globalizer 0.1.8 (org.minizinc.globalizer, experimental, tool)\n  Gurobi <unknown version> (org.minizinc.mip.gurobi, mip, float, api)\n  HiGHS 1.15.1 (org.minizinc.mip.highs, mip, float, api, highs)\n  OR Tools CP-SAT 9.15 (cp-sat, cp-sat, cp, lcg, int)\n  SCIP <unknown version> (org.minizinc.mip.scip, mip, float, api)\n  Xpress <unknown version> (org.minizinc.mip.xpress, mip, float, api, float_times)\nSearch path for solver configurations:\n  /Applications/MiniZincIDE.app/Contents/Resources/share/minizinc/solvers\n  /usr/local/share/minizinc/solvers\n  /usr/share/minizinc/solvers\n  /opt/homebrew/share/minizinc/solvers"
+}

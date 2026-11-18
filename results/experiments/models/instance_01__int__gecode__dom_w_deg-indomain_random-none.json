@@ -1,0 +1,373 @@
+{
+  "instance": "instance_01",
+  "n": 10,
+  "m": 102,
+  "strategy": "custom",
+  "model": "int",
+  "solver": "gecode",
+  "free_search": false,
+  "var_order": "dom_w_deg",
+  "value_order": "indomain_random",
+  "restart": "empty_annotation",
+  "seed": 178,
+  "threads": 1,
+  "limit_seconds": 60.0,
+  "total_runtime": 0.1390758339985041,
+  "status": "OPTIMAL_SOLUTION",
+  "proven_optimal": true,
+  "timeout": false,
+  "objective": 1289,
+  "verified": true,
+  "statistics": {
+    "paths": 0,
+    "flatBoolVars": 63,
+    "flatIntVars": 28,
+    "flatBoolConstraints": 89,
+    "flatIntConstraints": 86,
+    "evaluatedHalfReifiedConstraints": 63,
+    "method": "minimize",
+    "flatTime": 0.071577,
+    "initTime": 0.0021065,
+    "solveTime": 0.0198875,
+    "solutions": 27,
+    "variables": 91,
+    "propagators": 171,
+    "propagations": 295101,
+    "nodes": 5645,
+    "failures": 2796,
+    "restarts": 0,
+    "peakDepth": 19,
+    "nSolutions": 27
+  },
+  "trajectory": [
+    [
+      0.09,
+      2032
+    ],
+    [
+      0.09,
+      1951
+    ],
+    [
+      0.09,
+      1888
+    ],
+    [
+      0.09,
+      1874
+    ],
+    [
+      0.091,
+      1853
+    ],
+    [
+      0.091,
+      1849
+    ],
+    [
+      0.091,
+      1845
+    ],
+    [
+      0.091,
+      1820
+    ],
+    [
+      0.092,
+      1769
+    ],
+    [
+      0.092,
+      1754
+    ],
+    [
+      0.092,
+      1703
+    ],
+    [
+      0.092,
+      1606
+    ],
+    [
+      0.093,
+      1589
+    ],
+    [
+      0.093,
+      1570
+    ],
+    [
+      0.093,
+      1567
+    ],
+    [
+      0.093,
+      1476
+    ],
+    [
+      0.093,
+      1470
+    ],
+    [
+      0.094,
+      1463
+    ],
+    [
+      0.094,
+      1442
+    ],
+    [
+      0.094,
+      1434
+    ],
+    [
+      0.095,
+      1416
+    ],
+    [
+      0.095,
+      1403
+    ],
+    [
+      0.095,
+      1350
+    ],
+    [
+      0.095,
+      1337
+    ],
+    [
+      0.095,
+      1308
+    ],
+    [
+      0.102,
+      1300
+    ],
+    [
+      0.102,
+      1289
+    ]
+  ],
+  "time_to_first": 0.09,
+  "time_to_best": 0.102,
+  "messages": [],
+  "stderr": "",
+  "command": [
+    "/Applications/MiniZincIDE.app/Contents/Resources/minizinc",
+    "--solver",
+    "org.gecode.gecode",
+    "--json-stream",
+    "--statistics",
+    "--intermediate-solutions",
+    "--output-time",
+    "--time-limit",
+    "60000",
+    "--fzn-flags",
+    "-r 178 -p 1",
+    "-D",
+    "variable_order=dom_w_deg;value_order=indomain_random;restart_policy=empty_annotation;",
+    "src/radio_coverage_int.mzn",
+    "data/instance_01.dzn"
+  ],
+  "instance_sha256": "1efb16befb713e34c6403eedfe840a6de0874e7567742bd4d7d4bac28cb833b5",
+  "model_sha256": "c21e8ded3905cca0b345713f36b6076c85e80a98d751583a9877b8b31c1bca1f",
+  "x": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "selected": [
+    [
+      0,
+      1,
+      3
+    ],
+    [
+      1,
+      0,
+      3
+    ],
+    [
+      5,
+      3,
+      3
+    ],
+    [
+      6,
+      1,
+      3
+    ],
+    [
+      7,
+      0,
+      3
+    ]
+  ],
+  "critical_support": [
+    2,
+    2
+  ],
+  "covered_points": 102,
+  "coverage_percent": 100.0,
+  "run_id": "instance_01__int__gecode__dom_w_deg-indomain_random-none",
+  "part": "models",
+  "restart_name": "none"
+}

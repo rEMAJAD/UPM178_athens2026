@@ -111,7 +111,8 @@ def write_instance(meta, path):
             'max_height=['+','.join(str(int(h)) for h in meta['max_height'])+'];',
             'cost=array3d(1..N,1..K,1..P,['+','.join(map(str,np.asarray(meta['cost']).ravel()))+']);',
             'coverage=array4d(1..N,1..K,1..P,1..M,['+','.join(map(str,cov.astype(int).ravel()))+']);']
-    path.write_text('\n'.join(data)+'\n', encoding='utf-8')
+    # newline='\n': ten sam plik (i hash) na Windows, macOS i Linux.
+    path.write_text('\n'.join(data)+'\n', encoding='utf-8', newline='\n')
     meta = dict(meta, dzn_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
     path.with_suffix('.json').write_text(json.dumps(meta,indent=2)+'\n',encoding='utf-8')
     # Mala, czytelna tabela do obejrzenia w edytorze lub Excelu.
@@ -123,10 +124,16 @@ def write_instance(meta, path):
     return path
 
 
+def dzn_digests(raw):
+    """Hashe pliku niezalezne od koncow linii (Windows CRLF / Unix LF, np. po git/ZIP)."""
+    lf = raw.replace(b'\r\n', b'\n')
+    return {hashlib.sha256(v).hexdigest() for v in (raw, lf, lf.replace(b'\n', b'\r\n'))}
+
+
 def load_instance(path):
     path = Path(path)
     meta = json.loads(path.with_suffix('.json').read_text(encoding='utf-8'))
-    if hashlib.sha256(path.read_bytes()).hexdigest() != meta['dzn_sha256']:
+    if meta['dzn_sha256'] not in dzn_digests(path.read_bytes()):
         raise ValueError('DZN changed since generation; regenerate it with its metadata')
     return meta
 

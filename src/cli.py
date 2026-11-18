@@ -7,6 +7,7 @@ from .dataset_generator import generate_all, load_instance
 from .optimization import solve, STRATEGIES, environment
 from .visualization import deployment_plots
 from .benchmarks import benchmark, accuracy, coverage_sweep
+from . import experiments
 
 
 DEFAULT_INSTANCE = 'data/instance_01.dzn'
@@ -74,13 +75,18 @@ def main():
     acc.add_argument('--stations', type=int, default=20)
     acc.add_argument('--strategy', choices=STRATEGIES, default='weighted_random')
 
-    sweep = commands.add_parser('coverage-sweep', help='Porownaj wymagania 95%, 98%, 100%')
+    sweep = commands.add_parser('coverage-sweep', help='Porownaj wymagania 95%%, 98%%, 100%%')
     sweep.add_argument('instance', nargs='?', default=DEFAULT_INSTANCE)
     sweep.add_argument('--out', default='results/coverage_sweep')
 
     for command in [bench, acc, sweep]:
         command.add_argument('--seconds', type=float, default=900,
                              help='Limit na pojedyncza probe, lacznie z kompilacja')
+    exp = commands.add_parser('experiments', help='Porownanie wszystkich metod z wykladow')
+    exp.add_argument('--part', nargs='+', default=['search','restarts','models','solvers','coverage'],
+                     choices=['search','search_hard','restarts','models','solvers','coverage'])
+    exp.add_argument('--seconds', type=float, default=60, help='Limit na probe (z kompilacja)')
+    exp.add_argument('--workers', type=int, default=4, help='Rownolegle proby (kazda 1 watek)')
     commands.add_parser('doctor', help='Sprawdz instalacje MiniZinc')
     args = parser.parse_args()
 
@@ -98,6 +104,11 @@ def main():
         accuracy(args.out, args.seconds, args.sizes, args.stations, strategy=args.strategy)
     elif args.command == 'coverage-sweep':
         coverage_sweep(args.instance, args.out, args.seconds)
+    elif args.command == 'experiments':
+        for row in experiments.dominance_stats():
+            print(f"dominance {row['instance']}: usunieto {row['removed']}/{row['legal']} konfiguracji")
+        for part in args.part:
+            experiments.run_part(part, args.seconds, args.workers)
     elif args.command == 'doctor':
         print(json.dumps(environment(), indent=2))
 

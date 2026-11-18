@@ -1,0 +1,505 @@
+{
+  "instance": "instance_02",
+  "n": 15,
+  "m": 227,
+  "strategy": "custom",
+  "model": "int_dom",
+  "solver": "gecode",
+  "free_search": false,
+  "var_order": "dom_w_deg",
+  "value_order": "indomain_random",
+  "restart": "restart_luby(100)",
+  "seed": 178,
+  "threads": 1,
+  "limit_seconds": 60.0,
+  "total_runtime": 1.0418432079968625,
+  "status": "OPTIMAL_SOLUTION",
+  "proven_optimal": true,
+  "timeout": false,
+  "objective": 1143,
+  "verified": true,
+  "statistics": {
+    "paths": 0,
+    "flatBoolVars": 169,
+    "flatIntVars": 56,
+    "flatBoolConstraints": 202,
+    "flatIntConstraints": 217,
+    "evaluatedHalfReifiedConstraints": 169,
+    "method": "minimize",
+    "flatTime": 0.231419,
+    "initTime": 0.00331337,
+    "solveTime": 0.72587,
+    "solutions": 40,
+    "variables": 225,
+    "propagators": 412,
+    "propagations": 6421727,
+    "nodes": 49765,
+    "failures": 24628,
+    "restarts": 104,
+    "peakDepth": 31,
+    "nSolutions": 40
+  },
+  "trajectory": [
+    [
+      0.267,
+      1855
+    ],
+    [
+      0.267,
+      1843
+    ],
+    [
+      0.267,
+      1821
+    ],
+    [
+      0.268,
+      1770
+    ],
+    [
+      0.268,
+      1723
+    ],
+    [
+      0.269,
+      1721
+    ],
+    [
+      0.269,
+      1635
+    ],
+    [
+      0.27,
+      1629
+    ],
+    [
+      0.27,
+      1618
+    ],
+    [
+      0.271,
+      1613
+    ],
+    [
+      0.272,
+      1532
+    ],
+    [
+      0.272,
+      1508
+    ],
+    [
+      0.273,
+      1495
+    ],
+    [
+      0.273,
+      1479
+    ],
+    [
+      0.277,
+      1464
+    ],
+    [
+      0.278,
+      1444
+    ],
+    [
+      0.279,
+      1429
+    ],
+    [
+      0.284,
+      1416
+    ],
+    [
+      0.285,
+      1367
+    ],
+    [
+      0.289,
+      1363
+    ],
+    [
+      0.291,
+      1354
+    ],
+    [
+      0.32,
+      1353
+    ],
+    [
+      0.322,
+      1341
+    ],
+    [
+      0.329,
+      1311
+    ],
+    [
+      0.329,
+      1301
+    ],
+    [
+      0.33,
+      1295
+    ],
+    [
+      0.331,
+      1276
+    ],
+    [
+      0.332,
+      1249
+    ],
+    [
+      0.374,
+      1243
+    ],
+    [
+      0.415,
+      1235
+    ],
+    [
+      0.425,
+      1219
+    ],
+    [
+      0.456,
+      1216
+    ],
+    [
+      0.476,
+      1191
+    ],
+    [
+      0.508,
+      1187
+    ],
+    [
+      0.537,
+      1183
+    ],
+    [
+      0.538,
+      1182
+    ],
+    [
+      0.698,
+      1159
+    ],
+    [
+      0.802,
+      1151
+    ],
+    [
+      0.843,
+      1150
+    ],
+    [
+      0.856,
+      1143
+    ]
+  ],
+  "time_to_first": 0.267,
+  "time_to_best": 0.856,
+  "messages": [],
+  "stderr": "",
+  "command": [
+    "/Applications/MiniZincIDE.app/Contents/Resources/minizinc",
+    "--solver",
+    "org.gecode.gecode",
+    "--json-stream",
+    "--statistics",
+    "--intermediate-solutions",
+    "--output-time",
+    "--time-limit",
+    "60000",
+    "--fzn-flags",
+    "-r 178 -p 1",
+    "-D",
+    "variable_order=dom_w_deg;value_order=indomain_random;restart_policy=restart_luby(100);",
+    "src/radio_coverage_int_dom.mzn",
+    "data/instance_02.dzn"
+  ],
+  "instance_sha256": "9d97fb9806a01b0253ae66cad7e4e5705228b1ac3be28a2384a227294f74664d",
+  "model_sha256": "c8f0ff44e69f7af09935c6e5939fcf7f3563c4a19050bbb399a477effc7a5a3e",
+  "x": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "selected": [
+    [
+      3,
+      0,
+      3
+    ],
+    [
+      5,
+      3,
+      3
+    ],
+    [
+      6,
+      0,
+      3
+    ],
+    [
+      7,
+      0,
+      3
+    ],
+    [
+      11,
+      2,
+      3
+    ]
+  ],
+  "critical_support": [
+    2,
+    2
+  ],
+  "covered_points": 227,
+  "coverage_percent": 100.0,
+  "run_id": "instance_02__int_dom__gecode__dom_w_deg-indomain_random-luby",
+  "part": "solvers",
+  "restart_name": "luby"
+}

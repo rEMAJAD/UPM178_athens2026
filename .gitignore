@@ -3,3 +3,10 @@ __pycache__/
 .venv/
 tmp/
 *.zip
+.DS_Store
+# Materialy od prowadzacych (zaszyfrowane slajdy) - nie publikujemy w publicznym repo
+od_prowadzacego/
+# Surowe logi solverow z eksperymentow (188 MB); wyniki sa w plikach .json i .csv
+results/experiments/**/*.solver.jsonl
+# Warianty danych do coverage - odtwarzane automatycznie przez experiments.py
+results/experiments/coverage/instances/
