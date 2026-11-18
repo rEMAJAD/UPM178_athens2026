@@ -1,0 +1,4 @@
+{"type": "statistics", "statistics": {"paths": 0, "flatBoolVars": 236, "flatIntVars": 627, "flatBoolConstraints": 11, "flatIntConstraints": 707, "evaluatedReifiedConstraints": 236, "method": "minimize", "flatTime": 0.144385}}
+{"type": "status", "status": "UNKNOWN", "time": 20014}
+{"type": "statistics", "statistics": {"initTime": 0.00660958, "solveTime": 19.8401, "solutions": 0, "variables": 999, "propagators": 263, "propagations": 97711530, "nodes": 2413565, "failures": 1206759, "restarts": 0, "peakDepth": 85}}
+{"type": "statistics", "statistics": {"nSolutions": 0}}
